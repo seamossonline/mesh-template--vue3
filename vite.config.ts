@@ -2,45 +2,43 @@ import { fileURLToPath, URL } from 'node:url'
 
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-
+import { viteCommonjs, esbuildCommonjs } from '@originjs/vite-plugin-commonjs';
 import webpack from 'webpack';
+const Webpack = new webpack.ProvidePlugin({
+  Buffer: ["buffer", "Buffer"],
+});
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [
-    vue(),
-    new webpack.ProvidePlugin({
-      Buffer: ["buffer", "Buffer"],
-    }),
-  ],
-  define: {
-    global: {},
-  },
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
-      "buffer": require.resolve("buffer"),
-      "stream": require.resolve("stream")
+      "buffer": import("buffer"),
+      "stream": import("stream"),
     }
   },
-})
-
-//mesh webpack copy
-
-module.exports = {
-  resolve: {
-    fallback: {
-      buffer: require.resolve("buffer"),
-      stream: require.resolve("stream"),
+  plugins: [
+    viteCommonjs(),
+    vue(),
+  ],
+  optimizeDeps: {
+    esbuildOptions: {
+      plugins: [
+        // Solves:
+        // https://github.com/vitejs/vite/issues/5308
+        // add the name of your package
+        esbuildCommonjs(['webpack','@emurgo/cardano-serialization-lib-nodejs','Webpack','stream','buffer','safe-buffer']),
+      ],
     },
   },
-  plugins: [
-    new webpack.ProvidePlugin({
-      Buffer: ["buffer", "Buffer"],
-    }),
-  ],
+  define: {
+    global: {},
+    asyncWebAssembly: true,
+  },
+});
+
+/* left out of migration, not sure where to place
   experiments: {
     asyncWebAssembly: true,
   },
-};
-*/
+  */

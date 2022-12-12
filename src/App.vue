@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
-// Mesh import below
-import { BrowserWallet } from '@meshsdk/core';
 </script>
 
 <template>
@@ -11,7 +9,6 @@ import { BrowserWallet } from '@meshsdk/core';
 
     <div class="wrapper">
       <HelloWorld msg="Mesh for Vue3" />
-
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>

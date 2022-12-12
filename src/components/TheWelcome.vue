@@ -5,6 +5,14 @@ import ToolingIcon from './icons/IconTooling.vue'
 import EcosystemIcon from './icons/IconEcosystem.vue'
 import CommunityIcon from './icons/IconCommunity.vue'
 import SupportIcon from './icons/IconSupport.vue'
+// import BrowserWallet
+import { BrowserWallet } from '@meshsdk/core';
+
+// connect to a wallet
+const wallet = await BrowserWallet.enable('eternl');
+
+// get assets in wallet
+const assets = await wallet.getAssets();
 </script>
 
 <template>
