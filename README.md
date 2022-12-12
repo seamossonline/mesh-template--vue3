@@ -1,3 +1,7 @@
+Working from the following:
+1. Working with Webpack (Vue): https://cli.vuejs.org/guide/webpack.html#simple-configuration
+2. Mesh manual migration (webpack): https://meshjs.dev/migration-manual-installation
+
 # mesh-template--vue3
 
 This template should help get you started developing with Vue 3 in Vite.
