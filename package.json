@@ -1,19 +1,22 @@
 {
+  "type": "module",
   "name": "mesh-template--vue3",
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "vite",
-    "build": "run-p type-check build-only",
+    "dev": "vite serve",
+    "build": "vite build",
     "preview": "vite preview",
-    "build-only": "vite build",
+    "build-only": "run-p type-check build-only",
     "type-check": "vue-tsc --noEmit",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
   },
   "dependencies": {
     "@meshsdk/core": "^1.2.1",
+    "buffer": "^6.0.3",
     "node": "^18.0.0",
     "npm": "^8.19.3",
+    "stream": "^0.0.2",
     "vue": "^3.2.45",
     "vue-router": "^4.1.6"
   },
