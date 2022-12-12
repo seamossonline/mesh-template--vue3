@@ -13,6 +13,12 @@ const wallet = await BrowserWallet.enable('eternl');
 
 // get assets in wallet
 const assets = await wallet.getAssets();
+
+// seamoss: from https://developers.cardano.org/docs/get-started/cardano-wallet-js
+const { WalletServer } = require('cardano-wallet-js');
+let walletServer = WalletServer.init('http://127.0.0.1:{3001}/v2');
+let information = await walletServer.getNetworkInformation();
+console.log(information);
 </script>
 
 <template>
