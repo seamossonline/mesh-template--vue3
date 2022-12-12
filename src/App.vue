@@ -2,7 +2,7 @@
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
 // Mesh import below
-
+import { BrowserWallet } from '@meshsdk/core';
 </script>
 
 <template>
